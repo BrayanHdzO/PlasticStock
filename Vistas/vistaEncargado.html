@@ -38,13 +38,16 @@
     <main class="table">
         <section class="table__header">
             <h1>Almacén De Productos</h1>
+            <a href="#" class="btn-contacto"><button>Generar Informe</button></a>
+            <a href="#" class="btn-contacto"><button>Agregar Producto</button></a>
         </section>
+        
         <section class="table__body">
             <table>
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Imagen</th>
+                        <th>Imagen</th  >
                         <th>Producto</th>
                         <th>Categoria</th>
                         <th>Descripción</th>
@@ -66,9 +69,9 @@
                             <p>1000</p>
                         </td>
                         <td>Unidades</td>
-                        <td><button type="button" class="btn btn-outline-primary"><i class="bi bi-arrow-clockwise"></i></button></td>
-                        <td><button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></button></td>
-                        <td><button type="button" class="btn btn-outline-warning"><i class="bi bi-pencil"></i></button></td>
+                        <td><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal__actualizar"><i class="bi bi-arrow-clockwise"></i></button></td>
+                        <td><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal__eliminar"><i class="bi bi-trash3"></i></button></td>
+                        <td><button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal__editar"><i class="bi bi-pencil"></i></button></td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -200,7 +203,89 @@
             </table>
         </section>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script type="text/javascript" src="nav.js"></script>
+
+
+
+    <!-- MODALES MODAL ACTUALIZAR -->
+    <div class="modal fade" id="modal__actualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizara Stock</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="1000" aria-label="Username">
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMAR DELETE -->
+
+    <div class="modal fade" id="modal__eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Seguro que deseas eliminar este registro?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR -->
+
+    <div class="modal fade" id="modal__editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Producto</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Atomizador" aria-label="Username">
+                    </div>
+                    <p>Categoria</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Producto" aria-label="Username">
+                    </div>
+                    <p>Descripción</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Atomizador de agua de 1 litro" aria-label="Username">
+                    </div>
+                    <p>Stock</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="1000" aria-label="Username">
+                    </div>
+                    <p>Tipo de Unidad</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Unidades" aria-label="Username">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -63,7 +63,8 @@
 }
 
 .header .btn-contacto button,
-.header .menu button {
+.header .menu button,
+.table__header .btn-contacto button {
     font-weight: 700;
     color: #1b3039;
     padding: 9px 25px;
@@ -75,7 +76,8 @@
 }
 
 .header .btn-contacto button:hover,
-.header .menu button:hover {
+.header .menu button:hover,
+.table__header .btn-contacto button:hover {
     background-color: #e2f1f8;
     color: #ffbc0e;
     transform: scale(1.1);
@@ -183,6 +185,9 @@ main.table {
     height: 10%;
     background-color: rgba(255, 255, 255, 0.486);
     padding: .10rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .table__body {
