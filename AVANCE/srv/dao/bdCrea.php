@@ -38,6 +38,6 @@ function bdCrea(\PDO $con)
      CONSTRAINT USU_ROL_ROL_FK
       FOREIGN KEY (ROL_ID)
       REFERENCES ROL(ROL_ID)
-    )'
+    )' 
  );
 }

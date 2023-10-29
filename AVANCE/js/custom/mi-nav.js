@@ -20,14 +20,34 @@ export class MiNav
   this.style.display = "block"
   this.innerHTML = /* HTML */
    `<div class="header-options full-box">
-	      <nav class="header-navbar full-box poppins-regular font-weight-bold" >
-	            <ul class="list-unstyled full-box">
-                  <li>
-                   <indicador-cargando>
-                   </indicador-cargando>
-                  </li>
-	            </ul>
-	        </nav>
+	   
+<header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="../../assets/img/imagen logo.png" alt="Logo de la empresa"></a>
+        </div
+        <nav>
+            <ul class="nav-links">
+               <li>
+                   indicador-cargando
+               </li>
+               
+            </ul>
+        </nav>
+      
+
+        <a onclick="openNav()" class="menu"><button>Menu</button></a>
+
+        <div class="overlay" id="mobile-menu">
+            <a onclick="closeNav()" class="close">&times;</a>
+            <div class="overlay-content">
+                <a href="perfil.html">Perfil</a>
+                <a href="index.html">Inicio</a>
+                <a href="nosotros.html">Nosotros</a>
+            </div>
+        </div>
+    </header>
+
+
 		</div>`
 
  }
@@ -56,16 +76,9 @@ export class MiNav
 
  hipervinculoInicio() {
   return (/* HTML */
-   `<li>
-     <div class=" full-box m-2">
-         <a href="index.html">
-             <img src="./assets/img/imagen logo.png" width="70px" alt="logo" class="img-fluid">
-         </a>
-     </div>
-    </li>
+   `
     <li>
-     <a href="index.html">
-      Inicio<span class="full-box" ></span></a>
+     <a href="index.html">Inicio</a>
     </li>`)
  }
 
@@ -76,14 +89,13 @@ export class MiNav
   return cue === "" ?
    ""
    : /* HTML */
-   `<li class="full-box">${cueHtml}</li>`
+   `<li><span style="color:white">${cueHtml}</span></li>`
  }
 
  hipervinculoPerfil() {
   return (/* HTML */
    `<li>
-     <a href="perfil.html">Perfil
-     <span class="full-box" ></span></a>
+     <a href="perfil.html">Perfil</a>
     </li>`)
  }
 
@@ -92,9 +104,18 @@ export class MiNav
   return rolIds.
    has(ROL_ADMINISTRADOR) ?
    /* HTML */
-   `<li>
-     <a class="btn btn-outline-success" href="admin.html">
-     Para administradores</a>
+   `
+    <li>
+     <a href="usuarios.html">
+     Empleados</a>
+    </li>
+    <li>
+     <a href="almacenes.html">
+     Almacenes</a>
+    </li>
+    <li>
+     <a href="encargados.html">
+     Encargados</a>
     </li>`
    : ""
  }
@@ -105,7 +126,7 @@ export class MiNav
    /* HTML */
    `<li>
      <a href="cliente.html">
-     Para Empleados<span class="full-box" ></span></a>
+     Para Empleados</a>
     </li>`
    : ""
  }
@@ -115,11 +136,12 @@ export class MiNav
      return rolIds.has(ROL_ENCARGADO) ?
       /* HTML */
       `<li>
-        <a href="vendedor.html">
-        Para Encargados<span class="full-box" ></span></a>
+        <a href="vistaEncargado.html">
+        Para Encargados</a>
        </li>`
       : ""
     }
+   
 }
 
 customElements
