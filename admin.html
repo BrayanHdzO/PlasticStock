@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+   content="width=device-width">
+
+  <!-- MDBootstrap V5 -->
+  <link rel="stylesheet" href="./css/mdb.min.css">
+
+  <!-- Font Awesome V5.15.1 -->
+  <link rel="stylesheet" href="./css/all.css">
+
+  <!-- Sweet Alert V10.13.0 -->
+
+
+  <!-- General Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+ <title>
+ Administrador
+ </title>
+ <script type="module"
+   src="./js/custom/mi-nav.js">
+   </script>
+</head>
+
+<body>
+  <header>
+   <mi-nav id="nav"></mi-nav>
+  </header>
+ <main id="main" hidden>
+  <h1>Bienvenido Administrador</h1>
+   <div class="buttons-container">
+      
+           <a href="adminAlmacenes.html">
+               <img src="img/almacen.png" alt="Encargados de Almacen">
+              <p>Almacenes</p>
+           </a>
+          
+     
+       
+           <a href="adminEncargadosA.html">
+               <img src="img/perfil.png" alt="Almacenes">
+              <p>Encargados de Almacenen</p>
+           </a>
+         
+       </div>
+  
+ </main>
+
+ <script type="module">
+  import {
+   ejecuta
+  } from "./lib/js/ejecuta.js"
+  import {
+   muestraError
+  } from "./lib/js/muestraError.js"
+  import {
+   saltaAIndex
+  } from "./lib/js/saltaAIndex.js"
+  import {
+   Sesion
+  } from "./js/Sesion.js"
+  import {
+   ROL_ADMINISTRADOR
+  } from "./js/const/ROL_ADMINISTRADOR.js"
+
+  preparaVista()
+
+  async function preparaVista() {
+   try {
+    const json =
+     await buscaEnElServidor()
+    const sesion = new Sesion(json)
+    await muestra(sesion)
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+
+  async function
+   buscaEnElServidor() {
+   return await ejecuta(fetch(
+    "srv/SrvSesion.php"))
+  }
+
+  async function muestra(sesion) {
+   if (sesion.rolIds
+    .has(ROL_ADMINISTRADOR)) {
+    nav.sesion = sesion
+    main.hidden = false
+    await saludoEnElServidor()
+   } else {
+    saltaAIndex()
+   }
+  }
+
+  async function
+   saludoEnElServidor() {
+   const saludo = await ejecuta(
+    fetch(
+     "srv/SrvSaludoCliente.php"))
+   alert(saludo)
+  }
+ </script>
+  <!-- MDBootstrap V5 -->
+  <script src="./js/mdb.min.js" ></script>
+
+  <!-- General scripts -->
+  <script src="./js/main.js" ></script>
+  <script src="../lib/js/nav.js" ></script>
+
+</body>
+
+</html>

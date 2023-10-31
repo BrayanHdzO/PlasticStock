@@ -1,0 +1,53 @@
+
+
+.elemento img {
+    float: left;
+    margin: 10px;
+    margin-right: 100px;
+    border: solid 3px black;
+    border-radius: 5px;
+    width: 35%;
+
+
+}
+.elemento{
+    width: 80%;
+    margin: 200px;
+
+}
+
+.texto{
+  position: relative;
+  font-size: 20px;
+  text-align: justify;
+
+}
+
+.subtitulo{
+text-align: center;
+}
+
+.elemento2 img {
+    float: right;
+    margin: 10px;
+    margin-left: 100px;
+    border: solid 3px black;
+    border-radius: 5px;
+    width: 30%;
+
+
+}
+
+.elemento2{
+    width: 80%;
+    margin: 200px;
+
+}
+
+
+.container{
+    border: solid 5px rgba(29, 1, 1, 0.222);
+    border-radius: 10px;
+    background-color: gray;
+    color: #fff;
+}

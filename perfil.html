@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+   content="width=device-width">
+  <!-- Normalize V8.0.1 -->
+
+
+  <!-- MDBootstrap V5 -->
+  <link rel="stylesheet" href="./css/mdb.min.css">
+
+  <!-- Font Awesome V5.15.1 -->
+  <link rel="stylesheet" href="./css/all.css">
+
+  <!-- Sweet Alert V10.13.0 -->
+
+
+  <!-- General Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+  
+ <title>Perfil</title>
+ <script type="module"
+   src="./lib/js/custom/indicador-cargando.js">
+   </script>
+ <script type="module"
+   src="./js/custom/mi-nav.js">
+   </script>
+</head>
+
+<body>
+  <header>
+   <mi-nav id="nav"></mi-nav>
+  </header>
+<div class="card d-flex align-items-center">
+  
+ <h1>Perfil</h1>
+ <p>
+  <label>
+   Usuario
+   <output id="usuario">
+    <indicador-cargando>
+    </indicador-cargando>
+   </output>
+  </label>
+ </p>
+ <p>
+  <label>
+   Roles
+   <output id="roles">
+    <indicador-cargando>
+    </indicador-cargando>
+   </output>
+  </label>
+ </p>
+ <p>
+  <a id="login" hidden
+    href="login.html" class="b-general">
+   Iniciar sesión</a>
+  <button id="logout" class="b-general" hidden>
+   Terminar sesión
+  </button>
+ </p>
+</div>
+
+ <script type="module">
+  import {
+   ejecuta
+  } from "./lib/js/ejecuta.js"
+  import {
+   muestraError
+  } from "./lib/js/muestraError.js"
+  import {
+   Sesion
+  } from "./js/Sesion.js"
+
+  preparaVista()
+
+  async function preparaVista() {
+   try {
+    const json =
+     await buscaEnElServidor()
+    const sesion = new Sesion(json)
+    muestra(sesion)
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+
+  async function
+   buscaEnElServidor() {
+   return await ejecuta(fetch(
+    "srv/SrvSesion.php"))
+  }
+
+  function muestra(sesion) {
+   const cue = sesion.cue
+   const rolIds = sesion.rolIds
+   nav.sesion = sesion
+   roles.value = rolIds.size === 0
+    ? "Sin roles"
+    : Array.from(rolIds).join(", ")
+   if (cue === "") {
+    login.hidden = false
+    usuario.value =
+     "No ha iniciado sesión"
+   } else {
+    logout.hidden = false
+    usuario.value = cue
+    escuchaEventos()
+   }
+  }
+
+  function escuchaEventos() {
+   logout.addEventListener("click",
+    terminaSesion)
+  }
+
+  async function terminaSesion() {
+   try {
+    await ejecuta(fetch(
+     "srv/SrvLogout.php"))
+    location.reload()
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+ </script>
+
+  <!-- MDBootstrap V5 -->
+  <script src="./js/mdb.min.js" ></script>
+
+  <!-- General scripts -->
+  <script src="./js/main.js" ></script>
+  <script src="../lib/js/nav.js" ></script>
+
+</body>
+
+</html>
